@@ -7,6 +7,8 @@ import projeto.Pessoa;
 import projeto.Pedido;
 import java.time.LocalDate;
 import projeto.Endereco;
+import projeto.Ingrediente;
+import projeto.Manufatura;
 import projeto.Produto;
 
 public class CadastrarPedido extends javax.swing.JFrame {
@@ -14,6 +16,8 @@ public class CadastrarPedido extends javax.swing.JFrame {
     //Instancia as listas necessárias
     ArrayList<Pedido> lista;
     ArrayList<Produto> listaprod;
+    ArrayList<Manufatura> listamanu;
+    ArrayList<Ingrediente> listaingr;
 
     public CadastrarPedido() {
         initComponents();
@@ -71,6 +75,7 @@ public class CadastrarPedido extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastro de pedidos");
@@ -373,6 +378,13 @@ public class CadastrarPedido extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 255));
 
+        jButton2.setText("jButton2");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -384,6 +396,8 @@ public class CadastrarPedido extends javax.swing.JFrame {
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton3))
                     .addGroup(layout.createSequentialGroup()
@@ -407,7 +421,8 @@ public class CadastrarPedido extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton3)
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel1)
+                    .addComponent(jButton2))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -612,6 +627,17 @@ public class CadastrarPedido extends javax.swing.JFrame {
         txtcpf.requestFocus();
     }//GEN-LAST:event_txtidadeFocusGained
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        if (this.lista == null) {
+            this.lista = new ArrayList<>();
+        }
+        if (this.listaprod == null) {
+            this.listaprod = new ArrayList<>();
+        }
+        new CadastrarProduto(this.lista, this.listaprod).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -647,6 +673,7 @@ public class CadastrarPedido extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cbestado;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

@@ -13,6 +13,10 @@ public class Produto implements Interface {
     //Construtores da classe Produto
     public Produto() {
     }
+    
+    public Produto(float custo) {
+        this.custo = custo;
+    }
 
     public Produto(ArrayList<Ingrediente> ingrediente, ArrayList<Manufatura> manufatura) {
         this.ingrediente = ingrediente;

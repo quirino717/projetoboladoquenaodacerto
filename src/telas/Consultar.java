@@ -580,7 +580,7 @@ public class Consultar extends javax.swing.JFrame {
                     for (Manufatura m : pr.getManufatura()) {
                         manufatura += m.processo.imprimir(); //Armazena as informações da(s) manufaturas(s) na variavel designada por meio da função imprimir()
                     }
-                    break; //Encerra o "for"
+                    
                 }
 
                 msg = "Pedido encontrado!"; //String para exibir mensagem de pedido na Label designada
@@ -699,7 +699,7 @@ public class Consultar extends javax.swing.JFrame {
                         for (Manufatura m : pr.getManufatura()) {
                             manufatura += m.processo.imprimir(); //Armazena as informações da(s) manufaturas(s) na variavel designada por meio da função imprimir()
                         }
-                        break; //Encerra o "for"
+                        
                     }
 
                     msg = "Pedido encontrado!"; //String para exibir mensagem de pedido na Label designada

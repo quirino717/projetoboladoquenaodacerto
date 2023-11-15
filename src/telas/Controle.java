@@ -191,13 +191,7 @@ public class Controle extends javax.swing.JFrame {
         if (this.listaprod == null) {
             this.listaprod = new ArrayList<>();
         }
-        if (this.listamanu == null) {
-            this.listamanu = new ArrayList<>();
-        }
-        if (this.listaingr == null) {
-            this.listaingr = new ArrayList<>();
-        }
-        new CadastrarProduto(this.lista, this.listaprod, this.listamanu, this.listaingr).setVisible(true);
+        new CadastrarProduto(this.lista, this.listaprod).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 

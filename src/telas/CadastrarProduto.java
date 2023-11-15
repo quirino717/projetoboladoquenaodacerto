@@ -3,6 +3,7 @@ package telas;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.time.LocalDate;
+import javax.swing.JOptionPane;
 import projeto.Data;
 import projeto.Endereco;
 import projeto.Produto;
@@ -32,6 +33,12 @@ public class CadastrarProduto extends javax.swing.JFrame {
         this.listaprod = listaprod;
         this.listamanu = listamanu;
         this.listaingr = listaingr;
+        initComponents();
+    }
+
+    public CadastrarProduto(ArrayList<Pedido> lista, ArrayList<Produto> listaprod) {
+        this.lista = lista;
+        this.listaprod = listaprod;
         initComponents();
     }
 
@@ -130,6 +137,12 @@ public class CadastrarProduto extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setText("Informe o produto:");
+
+        txtnomeprod.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtnomeprodFocusGained(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Custo total do(s) produto(s):");
@@ -815,13 +828,13 @@ public class CadastrarProduto extends javax.swing.JFrame {
         //O objeto é adicionado à lista de produtos
         this.listaprod.add(pr);
 
-        //Depois de salvar os valores na lista, limpa as caixas de texto para o próximo registro
-        txtnomeprod.setText("");
-        txtcustoprod.setText("");
+        //Exibe mensagem de produto registrado
+        JOptionPane.showMessageDialog(null, "Produto registrado!!!");
 
-        //Após cadastrar, exibe uma mensagem que o cadastro foi realizado com sucesso
-        String msg = "Produto registrado!"; //Variavel para mudar o que é exibido na label
-        jLabel38.setText(msg); //Seta o texto da label para o texto da variavel
+        //Reinicia a tela de cadastro de produto para o próximo produto
+        new CadastrarProduto(this.lista, this.listaprod).setVisible(true);
+        //Fecha a tela atual
+        this.dispose();
 
         System.out.println(pr.imprimir());
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -850,6 +863,7 @@ public class CadastrarProduto extends javax.swing.JFrame {
 
         //Calculo total do produto
         float valor = 0;
+
         for (Ingrediente listaingr : listaingr) {
             valor = valor + listaingr.getQtd() * listaingr.materiaprima.getPreco();
             //break;
@@ -960,6 +974,7 @@ public class CadastrarProduto extends javax.swing.JFrame {
 
         //Calculo total do produto
         float valor = 0;
+
         for (Manufatura listamanu : listamanu) {
             valor = valor + listamanu.getQtde() * listamanu.processo.calcCusto();
             //break;
@@ -1180,13 +1195,14 @@ public class CadastrarProduto extends javax.swing.JFrame {
             //O objeto é adicionado à lista de produtos
             this.listaprod.add(pr);
 
-            //Depois de salvar os valores na lista, limpa as caixas de texto para o próximo registro
-            txtnomeprod.setText("");
-            txtcustoprod.setText("");
+            //Exibe mensagem de produto registrado
+            JOptionPane.showMessageDialog(null, "Produto registrado!!!");
 
-            //Após cadastrar, exibe uma mensagem que o cadastro foi realizado com sucesso
-            String msg = "Produto registrado!"; //Variavel para mudar o que é exibido na label
-            jLabel38.setText(msg); //Seta o texto da label para o texto da variavel
+            //Reinicia a tela de cadastro de produto para o próximo produto
+            new CadastrarProduto(this.lista, this.listaprod).setVisible(true);
+            //Fecha a tela atual
+            this.dispose();
+
         }
     }//GEN-LAST:event_jButton1KeyPressed
 
@@ -1234,6 +1250,16 @@ public class CadastrarProduto extends javax.swing.JFrame {
         //Quando a caixa de texto de custo do processo ganha foco, o botão de cadastro da manufatura recebe esse foco
         jButton4.requestFocus();
     }//GEN-LAST:event_txtcustoproFocusGained
+
+    private void txtnomeprodFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtnomeprodFocusGained
+        //Inicia as listas de manufatura e ingrediente
+        if (this.listamanu == null) {
+            this.listamanu = new ArrayList<>();
+        }
+        if (this.listaingr == null) {
+            this.listaingr = new ArrayList<>();
+        }
+    }//GEN-LAST:event_txtnomeprodFocusGained
 
     /**
      * @param args the command line arguments
